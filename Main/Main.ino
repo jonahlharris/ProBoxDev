@@ -182,8 +182,8 @@ void loop()
     // Run option selected
     else if (button2Pressed)
     {
-      //timer.setTimer(start_hr, 0);
-      timer.setTimer(0, 10);
+      timer.setTimer(start_hr, 0);
+      //timer.setTimer(0, 10);      // For testing what the LED's do after the timer goes off
       
       timer.start();
       lock.close();
