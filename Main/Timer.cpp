@@ -50,8 +50,9 @@ void Timer::tic()
 
 void Timer::convertTimeToMillis()
 {
-	unsigned long total_mn = (hours*60) + minutes;
-	unsigned long seconds = total_mn*60;
+	unsigned long total_mn = hours;     // "hours" is minutes in the modification; names just haven't been changed
+	//unsigned long seconds = total_mn*60;
+  unsigned long seconds = total_mn*60;
 	remainingTime = seconds*1000;
 }
 
@@ -59,8 +60,12 @@ void Timer::convertMillisToTime()
 {
 	int seconds = remainingTime/1000;
 	int total_mn = seconds/60;
+  seconds = seconds%60;
 	minutes = total_mn%60;
 	hours = (total_mn-minutes)/60;
+
+  minutes = seconds;
+  hours = total_mn%60;
 }
 
 int Timer::isRunning()
