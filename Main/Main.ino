@@ -14,7 +14,7 @@ Timer timer;
 Lock lock(PinRegistry::LOCK);
 Button button1(PinRegistry::BUTTON1);
 Button button2(PinRegistry::BUTTON2);
-//Display display(PinRegistry::ANODES, PinRegistry::CATHODES);
+Display display(PinRegistry::ANODES, PinRegistry::CATHODES);
 
 int hours;
 int minutes;
@@ -31,7 +31,7 @@ void setup()
 {
 
 	  //Serial.begin(9600);
-	  //display.enablePins();
+	  display.enablePins();
 	  pinMode(PinRegistry::BUTTON1, INPUT);
 	  pinMode(PinRegistry::BUTTON2, INPUT);
 	  pinMode(PinRegistry::LOCK, OUTPUT);
@@ -50,17 +50,16 @@ void loop()
 		if (timer.ringRing()==true)   // After timer rings
 		{
 
-//      probably just have all LED's light up or do something neat
     
-//			start_hr = 0;
-//			start_mn = 0;
-//			display.clearDigits();
-//			display.showDot(i);
-//			if (i<4){
-//				i+=1;
-//			} else {
-//				i=0;
-//			}
+			start_hr = 0;
+			start_mn = 0;
+			display.clearDigits();
+			display.showDot(i);
+			if (i<4){
+				i+=1;
+			} else {
+				i=0;
+			}
 
 			
 			lock.open();
@@ -74,8 +73,8 @@ void loop()
 			timer.tic();
 			hours = timer.getHours();
 			int time = hours*100+timer.getMinutes();
-			//display.show(time);
-			//display.showDot(1); // takes some juice away from the other segments
+			display.show(time);
+			display.showDot(1); // takes some juice away from the other segments
 			if (timer.getMinutes()!=minutes)
 			{
 				minutes = timer.getMinutes();
@@ -87,7 +86,7 @@ void loop()
 	}
 	else  //button controls
 	{
-		//display.show(start_hr*100+start_mn);
+		display.show(start_hr*100+start_mn);
 
 
 
