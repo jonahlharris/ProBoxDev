@@ -25,7 +25,7 @@ int off = 1;
 const int flash = 500; // Time to flash
 unsigned long lockTime = 0;
 const int warning = 10000; // Time until lock sets
-int lockFlag = 1; // When to start warning countdown
+int lockFlag = 1; // Only locks when this flag is set. Flag is set when a time is input. If time is cleared, flag is cleared.
 
 int hours;
 int minutes;
